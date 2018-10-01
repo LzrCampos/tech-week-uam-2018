@@ -10,14 +10,17 @@ mongoose.connect('mongodb://localhost:27017/store')
 
 //carrega modulos
 const customer = require('./models/customer.model')
+const product = require('./models/product.model')
 
 //carrega rotas
 const customerRoute = require('./routes/customer.route')
+const productRoute = require('./routes/product.route')
 
 app.use(bodyParser.json({
     limit: '5mb'
 }));
 
 app.use('/customer', customerRoute)
+app.use('/product', productRoute)
 
 module.exports = app

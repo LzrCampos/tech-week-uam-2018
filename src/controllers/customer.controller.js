@@ -2,7 +2,6 @@ const repository = require('../repositories/customer.repository')
 
 exports.post = async (req, res, next) => {
     try {
-        console.log('----------------------------------------------')
         await repository.create({
             name: req.body.name,
             email: req.body.email,
