@@ -1,0 +1,30 @@
+{
+  "name": "tech-week-uam-2018",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./bin/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LzrCampos/tech-week-uam-2018.git"
+  },
+  "keywords": [],
+  "author": "LzrCampos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LzrCampos/tech-week-uam-2018/issues"
+  },
+  "homepage": "https://github.com/LzrCampos/tech-week-uam-2018#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "http": "0.0.0",
+    "mongoose": "^5.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
