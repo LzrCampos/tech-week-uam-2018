@@ -8,7 +8,10 @@ const schema = new Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        trim: true,
+        index: true,
+        unique: true
     },
     password: {
         type: String,

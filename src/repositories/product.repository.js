@@ -9,7 +9,6 @@ exports.create = async(data) => {
 exports.getAll = async() => {
     const res = await Product.find({
         active: true
-    }//, 'title price slug')
-    )
+    }, 'title price slug')
     return res
 }
