@@ -1,0 +1,18 @@
+{
+	"title":"Bolo",
+	"description":"bolo imaginario",
+	"ingredients":[
+		{
+			"quantity":"1",
+			"ingredient":"farinha de trigo"
+		},
+		{
+			"quantity":"1",
+			"ingredient":"leite"
+		},
+		{
+			"quantity":"3",
+			"ingredient":"ovos"
+		}
+	]
+}

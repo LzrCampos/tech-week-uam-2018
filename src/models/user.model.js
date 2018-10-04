@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+mongoose.set('useCreateIndex', true)
+
 const schema = new Schema({
     name: {
         type: String,
@@ -19,4 +21,4 @@ const schema = new Schema({
     }
 })
 
-module.exports = mongoose.model('Customer', schema)
+module.exports = mongoose.model('User', schema)

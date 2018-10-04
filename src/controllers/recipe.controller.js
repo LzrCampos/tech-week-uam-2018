@@ -1,4 +1,5 @@
-const repository = require('../repositories/product.repository')
+const repository = require('../repositories/recipe.repository')
+const auth = require('../auth')
 
 exports.get = async (req, res, next) => {
     try {
@@ -13,20 +14,21 @@ exports.get = async (req, res, next) => {
 
 exports.post = async (req, res, next) => {
     try {
+        const token = req.body.token || req.query.token || req.headers['x-access-token']
+        const data = await auth.decodeToken(token)
+
         await repository.create({
             title: req.body.title,
-            slug: req.body.slug,
             description: req.body.description,
-            price: req.body.price,
-            active: true,
-            tag: req.body.tag,
-            image: 'local'
+            ingredients: req.body.ingredients,
+            image: '../local',
+            user: data.id
         })
         res.status(201).send({
-            message: 'Produto cadastrado com sucesso!'
+            message: 'Receita cadastrada com sucesso!'
         })
     } catch (e) {
-        console.log(e);
+        console.log(e)
         res.status(500).send({
             message: 'Falha ao processar sua requisição'
         })

@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
-const Customer = mongoose.model('Customer');
+const User = mongoose.model('User');
 
 exports.create = async(data) => {
-    let customer = new Customer(data);
-    await customer.save();
+    let user = new User(data)
+    await user.save()
 }
 
 exports.auth = async(data) => {
-    const res = await Customer.findOne({
+    const res = await User.findOne({
         email: data.email,
         password: data.password
-    }, 'name email')
+    })
     return res
 }
