@@ -62,4 +62,6 @@ typings/
 
 # debug file
 launch.json
-package-lock*
+
+# package lock
+package-lock.json
