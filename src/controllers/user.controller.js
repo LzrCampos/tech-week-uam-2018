@@ -22,7 +22,7 @@ exports.post = async (req, res, next) => {
 }
 
 exports.auth = async (req, res, next) => {
-    try{
+    try {
         const user = await repository.auth({
             email: req.body.email,
             password: md5(req.body.password, config.secretKey)
@@ -48,9 +48,44 @@ exports.auth = async (req, res, next) => {
                 email: user.email
             }
         })
-    } catch(e) {
+    } catch (e) {
         res.status(500).send({
             message: 'Falha ao processar sua requisição'
         })
     }
+}
+
+exports.refreshToken = async (req, res, next) => {
+    try {
+        const token = req.body.token || req.query.token || req.headers['x-access-token']
+        const data = await auth.decodeToken(token)
+
+        const user = await repository.getById(data.id)
+
+        if (!user) {
+            res.status(404).send({
+                message: 'Usuário ou senha inválidos'
+            })
+            return
+        }
+
+        const newToken = await auth.generateToken({
+            id: user._id,
+            email: user.email,
+            name: user.name
+        })
+
+        res.status(200).send({
+            token: newToken,
+            data: {
+                name: user.name,
+                email: user.email
+            }
+        })
+    } catch (e) {
+        res.status(500).send({
+            message: 'Falha ao processar sua requisição'
+        })
+    }
+
 }
