@@ -3,13 +3,29 @@ const auth = require('../auth')
 
 exports.get = async (req, res, next) => {
     try {
-        var data = await repository.getAll()
+        let data = await repository.getAll()
         res.status(200).send(data)
     } catch (e) {
         res.status(500).send({
             message: 'Falha ao processar sua requisição'
         })
     }
+}
+
+exports.getWithUser = async (req, res, next) => {
+    try {
+        const token = req.headers['x-access-token']
+        const tokenData = await auth.decodeToken(token)
+
+        let data = await repository.getWithUser(tokenData.id)
+        
+        res.status(200).send(data)
+    } catch (e) {
+        res.status(500).send({
+            message: 'Falha ao processar sua requisição'
+        })
+    }
+
 }
 
 exports.post = async (req, res, next) => {
