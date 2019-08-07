@@ -1,0 +1,8 @@
+applications:
+- path: .
+  memory: 512M
+  instances: 1
+  domain: mybluemix.net
+  name: tech-week-uam-2018
+  host: tech-week-uam-2018
+  disk_quota: 1024M
